@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile | Skill Forge</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body { background: radial-gradient(circle at top left, #1a1025, #0a0a0d); background-color: #0a0a0d; padding-bottom: 80px; }
+        .top-brand { text-align: center; padding: 20px 0; font-size: 1.2rem; font-weight: 800; letter-spacing: 2px; color: #8c71ff; text-transform: uppercase; }
+
+        /* Main Profile Card */
+        .profile-card { background: #1a1a20; border-radius: 20px; overflow: hidden; margin: 0 20px 20px; position: relative; border: 1px solid rgba(255,255,255,0.05); box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        .p-bg-grad { height: 110px; background: linear-gradient(135deg, #1aa2a6, #3b28b7); opacity: 0.6; }
+        .settings-btn { position: absolute; top: 15px; right: 15px; background: rgba(0,0,0,0.4); border-radius: 50%; width:35px; height:35px; display:flex; justify-content:center; align-items:center; font-size: 1.1rem; cursor:pointer;}
+        .p-avatar-wrap { display: flex; justify-content: center; margin-top: -50px; }
+        .p-avatar { width: 100px; height: 100px; border-radius: 50%; background: #6b21a8; border: 6px solid #1a1a20; display: flex; justify-content: center; align-items: center; font-size: 2.2rem; font-weight: 800; color: #fff; box-shadow:inset 0 0 10px rgba(0,0,0,0.4);}
+        
+        .p-name-info { text-align: center; margin-top: 15px; padding: 0 20px;}
+        .p-name-info h2 { margin: 0; font-size: 1.6rem; font-weight: 900; color:#fff;}
+        .p-name-info p { margin: 5px 0 20px; color: #888; font-size: 1rem; font-weight:600;}
+        
+        .p-stats-row { display: flex; justify-content: space-around; padding: 20px 0; border-top: 1px solid rgba(255,255,255,0.05); }
+        .p-stat-box { text-align: center; width: 33%; position: relative; }
+        .p-stat-box:not(:last-child)::after { content: ''; position: absolute; right: 0; top: 10%; height: 80%; width: 1px; background: rgba(255,255,255,0.1); }
+        .p-stat-val { font-size: 1.4rem; font-weight: 900; color: #fff; }
+        .p-stat-lbl { font-size: 0.7rem; color: #888; font-weight: 900; text-transform: uppercase; letter-spacing: 1px; margin-top: 5px; }
+
+        /* Module Cards (Radar, Collection) */
+        .module-card { background: #1a1a20; border-radius: 20px; padding: 25px 20px; margin: 0 20px 20px; border: 1px solid rgba(255,255,255,0.05); box-shadow: 0 5px 20px rgba(0,0,0,0.3);}
+        .module-header { display: flex; align-items: center; gap: 10px; font-size: 1.3rem; font-weight: 900; margin-bottom: 20px; color: #fff; text-shadow:0 0 10px rgba(255,255,255,0.1);}
+        .module-header .m-icon { font-size: 1.4rem; text-shadow:none;}
+
+        /* Learning Analysis Panel Layouts */
+        .analysis-stats-card { background: #15151a; border-radius: 15px; padding: 20px 10px; margin-bottom: 25px; display: flex; justify-content: space-around; align-items: center; border: 1px solid rgba(255,255,255,0.05); }
+        .a-stat { text-align: center; width: 33%; position: relative; }
+        .a-stat:not(:last-child)::after { content: ''; position: absolute; right: 0; top: 15%; height: 70%; width: 1px; background: rgba(255,255,255,0.1); }
+        .a-val { font-size: 1.8rem; font-weight: 900; margin-bottom: 5px; }
+        .a-lbl { font-size: 0.85rem; color: #888; font-weight: 700; }
+        
+        .analysis-section { margin-bottom: 20px; }
+        .analysis-section:last-child { margin-bottom: 0; }
+        .asec-title { font-size: 1.1rem; font-weight: 800; color: #fff; margin-bottom: 12px; display:flex; align-items:center; gap:8px;}
+        .asec-list { list-style: none; padding: 0; margin: 0; }
+        .asec-list li { position: relative; padding-left: 20px; margin-bottom: 12px; color: #b0b0b0; font-size: 0.95rem; font-weight: 600; line-height: 1.4; }
+        .asec-list li::before { content: '•'; position: absolute; left: 0; top: -5px; font-size: 1.6rem; }
+        #la-strengths-list li::before { color: #10b981; }
+        #la-weak-list li::before { color: #f43f5e; }
+        #la-recs-list li::before { color: #a855f7; }
+
+        /* Collection Grid */
+        .collection-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
+        .badge-node { display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 10px; padding: 15px 5px; border-radius: 12px; height: 100px;}
+        .badge-node.acquired { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); box-shadow: 0 4px 10px rgba(0,0,0,0.2);}
+        .badge-node .b-icon { font-size: 2.2rem; filter: saturate(1.5) drop-shadow(0 0 10px rgba(255,255,255,0.1)); }
+        .badge-node:not(.acquired) .b-icon { opacity: 0.2; filter: grayscale(1); box-shadow:none; drop-shadow:none; }
+        .badge-node .b-lbl { font-size: 0.75rem; font-weight: 800; color: #fff; line-height: 1.2; text-shadow:0 0 5px rgba(0,0,0,0.5);}
+        .badge-node:not(.acquired) .b-lbl { color: #555; text-shadow:none;}
+
+        /* Logout */
+        .logout-btn { display: block; margin: 0 20px 40px; padding: 18px; border-radius: 15px; background: transparent; border: 1px solid rgba(239, 68, 68, 0.4); color: #ef4444; text-align: center; font-size: 1.1rem; font-weight: 800; cursor: pointer; text-decoration: none; box-shadow:0 5px 15px rgba(239, 68, 68, 0.1); transition:0.2s;}
+        .logout-btn:active { transform:scale(0.98); }
+
+        .bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; background: rgba(15, 15, 19, 0.95); backdrop-filter: blur(10px); border-top: 1px solid rgba(255,255,255,0.05); display: flex; justify-content: space-around; padding: 15px 0 20px 0; z-index:1000;}
+        .nav-item { text-decoration: none; display: flex; flex-direction: column; align-items: center; gap: 5px; color: #666; font-weight: 700; font-size: 0.8rem; transition: 0.2s; }
+        .nav-item.active { color: #a855f7; }
+        .nav-item .icon { font-size: 1.5rem; }
+        .nav-item.active .icon { text-shadow: 0 0 10px rgba(168, 85, 247, 0.5); }
+    </style>
+</head>
+<body>
+    
+    <div class="top-brand">SKILLFORGE</div>
+
+    <div class="profile-card pop-anim">
+        <div class="settings-btn">⚙️</div>
+        <div class="p-bg-grad"></div>
+        <div class="p-avatar-wrap">
+            <div class="p-avatar" id="p-initials">--</div>
+        </div>
+        <div class="p-name-info">
+            <h2 id="p-name">Loading...</h2>
+            <p id="p-email">--</p>
+        </div>
+        <div class="p-stats-row">
+            <div class="p-stat-box">
+                <div class="p-stat-val" id="p-level">0</div>
+                <div class="p-stat-lbl">LEVEL</div>
+            </div>
+            <div class="p-stat-box">
+                <div class="p-stat-val" id="p-badges">0</div>
+                <div class="p-stat-lbl">BADGES</div>
+            </div>
+            <div class="p-stat-box">
+                <div class="p-stat-val" id="p-topics">0</div>
+                <div class="p-stat-lbl">TOPICS</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="module-card pop-anim" style="animation-delay: 0.1s;">
+        <div class="module-header">Learning Analysis</div> <!-- No AI or Hugging Face displayed -->
+        
+        <div class="analysis-stats-card">
+            <div class="a-stat">
+                <div class="a-val" id="la-score" style="color: #a855f7;">0</div>
+                <div class="a-lbl">Score</div>
+            </div>
+            <div class="a-stat">
+                <div class="a-val" id="la-accuracy" style="color: #10b981;">0%</div>
+                <div class="a-lbl">Accuracy</div>
+            </div>
+            <div class="a-stat">
+                <div class="a-val" id="la-topics" style="color: #facc15;">0</div>
+                <div class="a-lbl">Topics</div>
+            </div>
+        </div>
+
+        <div class="analysis-section">
+            <div class="asec-title">📈 Strengths</div>
+            <ul class="asec-list" id="la-strengths-list"></ul>
+        </div>
+
+        <div class="analysis-section">
+            <div class="asec-title">📉 Weak Areas</div>
+            <ul class="asec-list" id="la-weak-list"></ul>
+        </div>
+
+        <div class="analysis-section">
+            <div class="asec-title">🎯 Recommendations</div>
+            <ul class="asec-list" id="la-recs-list"></ul>
+        </div>
+    </div>
+
+    <div class="module-card pop-anim" style="animation-delay: 0.2s;">
+        <div class="module-header"><span class="m-icon" style="color:#facc15;">🎗️</span> Collection</div>
+        <div class="collection-grid" id="collection-grid">
+            <!-- Badges rendered via profile.js -->
+        </div>
+    </div>
+
+    <a href="#" class="logout-btn pop-anim" onclick="logout(); return false;" style="animation-delay: 0.3s;">
+        <span style="font-size:1.2rem; margin-right:5px; vertical-align:middle;">↪</span> Log Out
+    </a>
+
+    <div class="bottom-nav">
+        <a href="/dashboard.html" class="nav-item">
+            <span class="icon">🏠</span><span>Home</span>
+        </a>
+        <a href="/topics.html" class="nav-item">
+            <span class="icon">📖</span><span>Topics</span>
+        </a>
+        <a href="/leaderboard.html" class="nav-item">
+            <span class="icon">🏆</span><span>Rank</span>
+        </a>
+        <a href="/profile.html" class="nav-item active">
+            <span class="icon">👤</span><span>Profile</span>
+        </a>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/profile.js"></script>
+</body>
+</html>

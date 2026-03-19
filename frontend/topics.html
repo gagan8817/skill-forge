@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Topics | Skill Forge</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body { background: radial-gradient(circle at top left, #1a1025, #0a0a0d); background-color: #0a0a0d; padding-bottom: 80px; }
+        .top-brand { text-align: center; padding: 20px 0; font-size: 1.2rem; font-weight: 800; letter-spacing: 2px; color: #8c71ff; text-transform: uppercase; }
+        .bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; background: rgba(15, 15, 19, 0.95); backdrop-filter: blur(10px); border-top: 1px solid rgba(255,255,255,0.05); display: flex; justify-content: space-around; padding: 15px 0 20px 0; z-index:1000;}
+        .nav-item { text-decoration: none; display: flex; flex-direction: column; align-items: center; gap: 5px; color: #666; font-weight: 700; font-size: 0.8rem; transition: 0.2s; }
+        .nav-item.active { color: #a855f7; }
+        .nav-item .icon { font-size: 1.5rem; }
+        .nav-item.active .icon { text-shadow: 0 0 10px rgba(168, 85, 247, 0.5); }
+
+        .topics-header { padding: 0 20px; margin-bottom: 25px; }
+        .topics-header h1 { font-size: 2.2rem; font-weight: 900; color: #fff; margin-bottom: 5px; }
+        .topics-header p { color: #a0a0a0; font-size: 1.05rem; font-weight: 500; }
+
+        .topics-list { display: flex; flex-direction: column; gap: 20px; padding: 0 20px; }
+        
+        .topic-card {
+            background: #1c1c24; 
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 20px;
+            padding: 20px;
+            display: flex;
+            gap: 20px;
+            text-decoration: none;
+            color: #fff;
+            transition: 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            position: relative;
+        }
+        .topic-card.completed {
+            box-shadow: 0 0 20px rgba(168, 85, 247, 0.15); 
+        }
+        .topic-card:not(.locked):hover { transform: translateY(-3px); border-color: rgba(168, 85, 247, 0.3); }
+
+        .topic-icon-box {
+            width: 70px; height: 70px;
+            background: linear-gradient(135deg, #373356, #2d3b66);
+            border-radius: 16px;
+            display: flex; justify-content: center; align-items: center;
+            font-size: 2rem; flex-shrink: 0;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.2);
+        }
+
+        .topic-content { flex: 1; display: flex; flex-direction: column; justify-content: center; }
+        .topic-title-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px; }
+        .topic-title-row h3 { font-size: 1.4rem; font-weight: 800; margin: 0; }
+        .topic-desc { font-size: 0.9rem; color: #a0a0a0; margin-bottom: 15px; line-height: 1.4; font-weight:600;}
+
+        .topic-prog-labels { display: flex; justify-content: space-between; font-size: 0.8rem; font-weight: 800; color: #888; margin-bottom: 6px; }
+        .topic-prog-track { width: 100%; height: 8px; background: rgba(255,255,255,0.1); border-radius: 10px; overflow: hidden; }
+        .topic-prog-fill { height: 100%; background: linear-gradient(90deg, #3b82f6, #a855f7); border-radius: 10px; transition: 1s ease; }
+
+        .locked { opacity: 0.6; cursor: not-allowed; filter: grayscale(1); }
+    </style>
+</head>
+<body class="mobile-app">
+    
+    <div class="top-brand">SKILLFORGE</div>
+
+    <div class="topics-header">
+        <h1>Learning Path</h1>
+        <p>Master concepts one node at a time.</p>
+    </div>
+
+    <div class="topics-list" id="topics-list">
+        <!-- Topic cards populated explicitly matching screenshot here -->
+    </div>
+
+    <div class="bottom-nav">
+        <a href="/dashboard.html" class="nav-item">
+            <span class="icon">🏠</span><span>Home</span>
+        </a>
+        <a href="/topics.html" class="nav-item active">
+            <span class="icon">📖</span><span>Topics</span>
+        </a>
+        <a href="/leaderboard.html" class="nav-item">
+            <span class="icon">🏆</span><span>Rank</span>
+        </a>
+        <a href="/profile.html" class="nav-item">
+            <span class="icon">👤</span><span>Profile</span>
+        </a>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/topics_list.js"></script>
+</body>
+</html>

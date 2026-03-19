@@ -1,0 +1,82 @@
+[
+  {
+    "username": "gaganreddy1711@gmail.com",
+    "password": "Startup",
+    "score": 20,
+    "completedProblems": [
+      "arr-1",
+      "arr-lvl1"
+    ]
+  },
+  {
+    "username": "gagan24307@gmail.com",
+    "displayName": "gagan24307",
+    "password": "Startup",
+    "score": 590,
+    "completedProblems": [
+      "arr-concept",
+      "arr-basic",
+      "ll-concept",
+      "ll-basic",
+      "ll-boss",
+      "arr-intermediate",
+      "arr-expert",
+      "arr-boss",
+      "sq-concept",
+      "dp-concept",
+      "dp-boss"
+    ],
+    "badges": [
+      "🎖️ Level 1: Concepts",
+      "🎖️ Level 2: Basic Quiz",
+      "🎖️ Level 3: BOSS CHALLENGE",
+      "🎖️ Level 3: Intermediates",
+      "🎖️ Level 4: Expert Quiz",
+      "🎖️ Level 5: BOSS CHALLENGE",
+      "🎖️ Level 2: BOSS CHALLENGE"
+    ],
+    "lastActiveDate": "Thu Mar 19 2026",
+    "streak": 1,
+    "totalAnswers": 46,
+    "correctAnswers": 17,
+    "lastClaimDate": "Thu Mar 19 2026"
+  },
+  {
+    "username": "byneedipranavraj666@gmail.com",
+    "displayName": "byneedipranavraj666",
+    "password": "raj1234",
+    "score": 115,
+    "completedProblems": [
+      "ll-concept",
+      "ll-basic",
+      "ll-boss"
+    ],
+    "badges": [
+      "🎖️ Level 1: Concepts",
+      "🎖️ Level 2: Basic Quiz",
+      "🎖️ Level 3: BOSS CHALLENGE"
+    ],
+    "totalAnswers": 11,
+    "correctAnswers": 2,
+    "streak": 1,
+    "lastActiveDate": "Thu Mar 19 2026",
+    "lastClaimDate": "Thu Mar 19 2026"
+  },
+  {
+    "username": "bodapati.tharak@gmail.com",
+    "displayName": "bodapati.tharak",
+    "password": "thar@2007",
+    "score": 45,
+    "completedProblems": [
+      "arr-concept"
+    ],
+    "badges": [
+      "🎖️ Level 1: Concepts"
+    ],
+    "totalAnswers": 1,
+    "correctAnswers": 1,
+    "streak": 1,
+    "lastActiveDate": "Thu Mar 19 2026",
+    "lastClaimDate": "Thu Mar 19 2026"
+  }
+]
