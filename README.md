@@ -8,6 +8,8 @@
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
 
+🔗 **Live Demo:** [https://skill-forge-uemf.onrender.com](https://skill-forge-uemf.onrender.com)
+
 ---
 
 ## ✨ Features
@@ -141,14 +143,3 @@ skill-forge/
 - **Bottom Navigation Bar** for seamless app-like navigation
 - **Gamified Progression** to keep learners motivated
 
----
-
-## 👨‍💻 Author
-
-**Gagan** — Built with ❤️ for learning DSA the fun way!
-
----
-
-## 📄 License
-
-This project is open source and available under the [MIT License](LICENSE).
